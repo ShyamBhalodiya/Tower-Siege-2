@@ -16,7 +16,7 @@ class chain {
             var pos = this.body.bodyA.position;
             var point = this.body.pointB;
             push();
-            stroke(255);
+            stroke(100);
             strokeWeight(7);
             line(pos.x, pos.y, point.x, point.y);
             pop();

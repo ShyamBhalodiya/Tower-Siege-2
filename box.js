@@ -4,10 +4,10 @@ class box {
         this.width = width;
         this.body = Bodies.rectangle(x, y, this.width, this.height);
         World.add(world, this.body);
-        this.visi = 0;
+        this.visi = 255;
     }
     display(Colour) {
-        if (this.body.velocity.x < 2 || this.body.velocity.y < 2) {
+        if (this.body.speed < 8) {
             this.color = Colour;
             var pos = this.body.position;
             push();
@@ -20,10 +20,15 @@ class box {
         else {
             push();
             this.visi = this.visi - 10;
-            tint(225, this.visi);
+            tint(255, this.visi);
             World.remove(world, this.body);
             pop();
         }
 
+    }
+    score(){
+        if(this.visi < 0 && this.visi > -10){
+            score = score + 1 ;
+        }
     }
 }

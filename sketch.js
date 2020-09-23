@@ -5,6 +5,9 @@ const Bodies = Matter.Bodies;
 const Constraint = Matter.Constraint;
 
 var engine, world;
+var score = 0;
+var bg = 225;
+var datetime;
 
 function setup() {
   createCanvas(1600, 700);
@@ -80,11 +83,12 @@ function setup() {
 
   String = new chain(polygon.body, { x: 290, y: 200 });
 
+  back();
   Engine.run(engine);
 }
 
 function draw() {
-  background(0);
+  background(bg);
 
   base1.display();
   base2.display();
@@ -148,11 +152,45 @@ function draw() {
 
   //string
   String.display();
+  //score 
+  box1.score();
+  box2.score();
+  box3.score();
+  box4.score();
+  box5.score();
+  box6.score();
+  box7.score();
+  box8.score();
+  box9.score();
+  box10.score();
+  box11.score();
+  box12.score();
+  box13.score();
+  box14.score();
+  box15.score();
+  box16.score();
+  box17.score();
+  box18.score();
+  box19.score();
+  box20.score();
+  box21.score();
+  box22.score();
+  box23.score();
+  box24.score();
+  box25.score();
+  box26.score();
+  box27.score();
+  box28.score();
+  box29.score();
+  box30.score();
+  box31.score();
+
   drawSprites();
-  fill(225);
+  fill(100);
   textSize(24);
-  text("Drag the Hexaognal stone and Release it, to launch towards the blocks", 200, 50);
+  text("Drag the Hexagonal stone and Release it, to launch towards the blocks", 200, 50);
   text("Press Space to get a second chance", 1000, 50);
+  text("Score = " + score, 50, 50);
 }
 function mouseDragged() {
   Matter.Body.setPosition(polygon.body, { x: mouseX, y: mouseY });
@@ -165,4 +203,19 @@ function keyPressed() {
     Matter.Body.setPosition(polygon.body, { x: 160, y: 280 });
     String.attach(polygon.body);
   }
+}
+async function back() {
+  response = await fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata");
+  responseJSON = await response.json();
+
+  datetime = responseJSON.datetime;
+  hour = datetime.slice(11, 13);
+
+  if (hour >= 06 && hour <= 18) {
+    bg = 255;
+  }
+  else {
+    bg = 0;
+  }
+  
 }
