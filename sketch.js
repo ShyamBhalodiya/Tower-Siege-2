@@ -211,7 +211,7 @@ async function back() {
   datetime = responseJSON.datetime;
   hour = datetime.slice(11, 13);
 
-  if (hour >= 06 && hour <= 18) {
+  if (hour >= 06 && hour < 18) {
     bg = 255;
   }
   else {
